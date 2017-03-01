@@ -14,8 +14,14 @@ app.get('/',function (req, res) {
      
 });
 
-app.post('/', urlencodedParser, function(req, res) {
-    console.log(req.body.email);
+app.get('/contact', function (req, res){
+    // body...
+    res.sendFile(__dirname + '/views/signup.html')
+
+})
+
+app.post('/contact', urlencodedParser, function(req, res) {
+    // console.log(req.body.email);
     // body...
         var smtpTransport = nodemailer.createTransport({
             service: "gmail",
@@ -90,29 +96,3 @@ app.listen(8000, function() {
     // body...
     console.log('Server Start At Port 8000');
 });
-
-// create reusable transporter object using the default SMTP transport
-// let transporter = nodemailer.createTransport({
-//     service: 'gmail',
-//     auth: {
-//         user: 'ngocthach.cse@gmail.com',
-//         pass: 'thachagar'
-//     }
-// });
-
-// // setup email data with unicode symbols
-// let mailOptions = {
-//     // from: '"Fred Foo 👻" <foo@blurdybloop.com>', // sender address
-//     to: 'bar@blurdybloop.com', // list of receivers
-//     subject: 'Hello ✔', // Subject line
-//     text: 'Hello world ?', // plain text body
-//     html: '<b>Hello world ?</b>' // html body
-// };
-
-// // send mail with defined transport object
-// transporter.sendMail(mailOptions, (error, info) => {
-//     if (error) {
-//         return console.log(error);
-//     }
-//     console.log('Message %s sent: %s', info.messageId, info.response);
-// });

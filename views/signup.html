@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>True Colors - Sign Up</title>
+    <link rel="shortcut icon" href="/images/logo/logoShadowHunter.png">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+
+<body style="background-image: url(/images/back.jpg);">
+
+    <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+
+    <div class="form-style-8">
+    <h2>Contact Us</h2>
+    <form id="ggsheet" method="POST" action="" target="no-target">
+        <div>
+            <input type=text id="yname" name="name"  placeholder="Your Name">
+           
+        </div>
+        <div>
+            <input type=email id="yemail" name="email"   placeholder="Your Email">
+        </div>
+        <div>
+            <input type=url id="yweb" name="web"  placeholder="Your Website">
+       
+        </div>
+        <div>
+            <textarea rows=4 id="ymessage" name="message" placeholder="Leave your message"></textarea>
+        </div>
+        <div >
+            <button class="send" id="form-submit" type="submit">SEND</button>
+        </div>
+    </form>
+    </div>
+    <p id="input-feedback"></p>
+    <iframe src="#" id="no-target" name="no-target" style="visibility:hidden"></iframe>
+    <script>
+        $('#ggsheet').one('submit', function() {
+            var inputName = encodeURIComponent($('#yname').val());
+            var inputEmail = encodeURIComponent($('#yemail').val());
+            var inputWeb = encodeURIComponent($('#yweb').val());
+            var inputMessage = encodeURIComponent($('#ymessage').val());
+            var nameID = "entry.1032297804";
+            var emailID = "entry.1580459631";
+            var webID = "entry.1946576642";
+            var messageID = "entry.2103986532";
+
+            var baseURL = 'https://docs.google.com/forms/d/e/1FAIpQLSdJ6v7oZTOhLsX0NilK8UPMq4Rn8qRfk_TO5AonNEauWXZ5Gg/formResponse?';
+            var submitRef = '&submit=Submit';
+            var submitURL = (baseURL + nameID + "=" + inputName + "&" + emailID + "=" + inputEmail + "&" + webID + "=" + inputWeb + "&" + messageID + "=" + inputMessage + submitRef);
+            console.log(submitURL);
+            $(this)[0].action = submitURL;
+        });
+    </script>
+    <script type="text/javascript">
+    //auto expand textarea
+    function adjust_textarea(h) {
+        h.style.height = "20px";
+        h.style.height = (h.scrollHeight)+"px";
+    }
+    </script>
+
+</body>
+
+</html>
